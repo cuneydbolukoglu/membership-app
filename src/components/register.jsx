@@ -1,7 +1,7 @@
 const Register = props => {
     return (
         <div>
-            <h1>LOGIN</h1>
+            <h1>Register</h1>
             <form>
                 <input type="text"
                     placeholder="username"
@@ -9,7 +9,10 @@ const Register = props => {
                 <input type="text"
                     placeholder="password"
                 />
-                <button>Login</button>
+                <input type="text"
+                    placeholder="repeat password"
+                />
+                <button>Sign up</button>
             </form>
         </div>
     )
