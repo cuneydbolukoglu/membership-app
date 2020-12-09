@@ -1,6 +1,6 @@
 const Register = props => {
     return (
-        <div>
+        <div className="register">
             <h1>Register</h1>
             <form>
                 <input type="text"

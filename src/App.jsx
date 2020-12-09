@@ -1,11 +1,11 @@
 import Login from './components/login';
-import Register from './components/register';
+
+import './App.scss'
 
 function App() {
   return (
-    <div>
+    <div className="membership-app">
       <Login />
-      <Register />
     </div>
   );
 }

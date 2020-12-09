@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+form{
+    width: 300px;
+    display: grid;
+}
+
+input{
+    outline: none;
+    border: 0;
+    height: 60px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 30px;
+    padding: 0px 10px;
+}
+
+button{
+    cursor: pointer;
+    background: none;
+    border: 1px solid #CCC;
+    padding: 20px;
+}
+
+.login{
+    justify-content: center;
+    align-items: center;
+    display: grid;
+}
+
+.register{
+    justify-content: center;
+    align-items: center;
+    display: grid;
+}
