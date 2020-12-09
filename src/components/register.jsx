@@ -4,13 +4,13 @@ const Register = props => {
             <h1>Register</h1>
             <form>
                 <input type="text"
-                    placeholder="username"
+                    placeholder="Username"
                 />
                 <input type="text"
-                    placeholder="password"
+                    placeholder="Password"
                 />
                 <input type="text"
-                    placeholder="repeat password"
+                    placeholder="Repeat password"
                 />
                 <button>Sign up</button>
             </form>

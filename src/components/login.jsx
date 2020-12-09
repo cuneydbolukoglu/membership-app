@@ -5,10 +5,10 @@ const Login = props => {
 
             <form>
                 <input type="text"
-                    placeholder="username"
+                    placeholder="Username"
                 />
                 <input type="text"
-                    placeholder="password"
+                    placeholder="Password"
                 />
                 <button>Login</button>
             </form>
