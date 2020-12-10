@@ -6,10 +6,10 @@ const Register = props => {
                 <input type="text"
                     placeholder="Username"
                 />
-                <input type="text"
+                <input type="password"
                     placeholder="Password"
                 />
-                <input type="text"
+                <input type="password"
                     placeholder="Repeat password"
                 />
                 <button>Sign up</button>

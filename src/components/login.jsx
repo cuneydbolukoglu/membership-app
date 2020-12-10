@@ -2,12 +2,11 @@ const Login = props => {
     return (
         <div className="login">
             <h1>LOGIN</h1>
-
             <form>
                 <input type="text"
                     placeholder="Username"
                 />
-                <input type="text"
+                <input type="password"
                     placeholder="Password"
                 />
                 <button>Login</button>
