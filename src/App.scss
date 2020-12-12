@@ -38,10 +38,48 @@ button {
     justify-content: center;
     align-items: center;
     display: grid;
+    position: relative;
+
+    .register-button{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+    }
 }
 
 .register {
     justify-content: center;
     align-items: center;
     display: grid;
+    position: relative;
+
+    .back-button{
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+    }
+}
+
+.error-page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    z-index: -1;
+
+    .error-title{
+        font-size: 50px;
+        text-align: center;
+        font-weight: 900;
+    }
+
+    .error-text{
+        font-size: 20px;
+    }
 }

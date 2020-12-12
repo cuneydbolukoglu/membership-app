@@ -1,25 +1,24 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import register from './register';
 
 const Login = props => {
-    let inputRef;
-    const [username, setUsername] = useState(null);
-
-    console.log(username)
 
     return (
         <div className="login">
             <h1>LOGIN</h1>
-            <form >
+            <Link to='/register'>
+                <button className="register-button">+</button>
+            </Link>
+            <form>
                 <input type="text"
                     placeholder="Username"
-                    ref={(e) => { inputRef = e; }}
                 />
                 <input type="password"
                     placeholder="Password"
                 />
-                <button
-                    onClick={() => { setUsername(inputRef.value); }}
-                >Login</button>
+                <button>Login</button>
             </form>
         </div>
     )
