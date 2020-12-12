@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Register = props => {
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
 
-    const array = [];
+    const userData = [];
 
     const user = {
         id: Date.now(),
@@ -14,11 +14,13 @@ const Register = props => {
         new: true
     }
 
-    array.push(user);
+    userData.push(user);
 
-    console.log(user);
+    useEffect(() => {
+        // localstorage sync update
+        localStorage.setItem("user", JSON.stringify(userData));
+    });
 
-    localStorage.setItem('user', array)
 
     return (
         <div className="register">
