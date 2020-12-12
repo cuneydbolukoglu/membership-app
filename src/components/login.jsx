@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import register from './register';
 
+localStorage.getItem(JSON.stringify,"user")
+
 const Login = props => {
 
     return (
