@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.scss';
 
-import Login from './components/login';
-import Register from './components/register';
+import Login from './components/Login';
+import Register from './components/Register';
 import Errorpage from './components/404';
 
 
