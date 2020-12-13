@@ -50,9 +50,6 @@ const Register = props => {
             password: passwordHash.generate(password)
         }
 
-        const userControl = userLocalParse.map(item => item.username === username)
-        console.log(userControl)
-
         if (user.push(newUser)) {
             setCompleted("You are registered successfully")
         }
@@ -85,8 +82,9 @@ const Register = props => {
                 >Sign up</button>
             </form>
             {
-                isShowError ? <div className="error">{errorMessage.map((item, index) => <p key={index}>{item}</p>)}</div>
-                : completed && <div className="success">{completed}</div>
+                isShowError ?
+                    <div className="error">{errorMessage.map((item, index) => <p key={index}>{item}</p>)}</div>
+                    : completed && <div className="success">{completed}</div>
             }
         </div>
     )
