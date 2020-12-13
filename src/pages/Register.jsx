@@ -7,8 +7,8 @@ const Register = props => {
     const [password, setPassword] = useState(null);
     const [repeatPassword, setRepeatPassword] = useState(null);
     const [isShowError, setIsShowError] = useState(false);
-    const [isUserError, setIsUserError] = useState(false);
     const [errorMessage, setErrorMessage] = useState([]);
+    const [completed, setCompleted] = useState(false);
 
     const onButtonClick = (e) => {
         e.preventDefault();
@@ -30,7 +30,7 @@ const Register = props => {
             errors.push("password null")
         } else if (password !== repeatPassword) {
             errors.push("password not match")
-        } 
+        }
         // else if (isUserError(true)){
         //     errors.push("username registered!")
         // }
@@ -40,7 +40,7 @@ const Register = props => {
 
     const addNewUser = () => {
 
-        const userLocal = localStorage.getItem("user");
+        const userLocal = localStorage.getItem("userList");
         const userLocalParse = JSON.parse(userLocal)
         let user = userLocal ? userLocalParse : [];
 
@@ -50,27 +50,15 @@ const Register = props => {
             password: passwordHash.generate(password)
         }
 
-        const userControl = userLocalParse.map(item => item.username)
-
+        const userControl = userLocalParse.map(item => item.username === username)
         console.log(userControl)
 
-        // if (userControl === true) {
-        //     isUser(true)
-        // }
-
-        // console.log(isUser)
-        
-        user.push(newUser);
-
-        // if ()) {
-        //     setIsUserError(true)
-        // } else {
-        //     setIsUserError(false)
-        // }
-
+        if (user.push(newUser)) {
+            setCompleted("You are registered successfully")
+        }
 
         // localstorage sync update
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("userList", JSON.stringify(user));
     }
 
     return (
@@ -97,7 +85,8 @@ const Register = props => {
                 >Sign up</button>
             </form>
             {
-                isShowError && <div className="error">{errorMessage.map((item, index) => <p key={index}>{item}</p>)}</div>
+                isShowError ? <div className="error">{errorMessage.map((item, index) => <p key={index}>{item}</p>)}</div>
+                : completed && <div className="success">{completed}</div>
             }
         </div>
     )

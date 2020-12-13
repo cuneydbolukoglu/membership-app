@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import passwordHash from 'password-hash';
 
 const Login = props => {
 
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
 
-    const loginControl = () => {
-        // load items array from localstorage 
-       const userLocal = localStorage.getItem("user");
-       const userLocalParse = JSON.parse(userLocal)
+    const loginControl = (e) => {
+        e.preventDefault();
 
-       userLocalParse.map(item => item.username === username)
+        // load items array from localstorage 
+        const userLocal = localStorage.getItem("userList");
+        const userLocalParse = JSON.parse(userLocal)
+
+        // const userLocal2 = userLocalParse.map(item => (item.username === username)
+        // const hash = passwordHash.verify("sha1$db799b1a$1$bc58e3a35d38817076f40d08fff0e0cef02af90f")
     }
 
     return (
@@ -30,7 +34,7 @@ const Login = props => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
-                onClick={()=> loginControl()}
+                    onClick={loginControl}
                 >Login</button>
             </form>
         </div>
