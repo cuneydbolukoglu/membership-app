@@ -40,11 +40,16 @@ button {
     display: grid;
     position: relative;
 
-    .register-button{
+    .registerIcon {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: -30px;
+        right: -20px;
+        max-width: 20px;
+        border-radius: 50%;
+        border-left: 3px solid #ccc;
+        border-right: 3px solid #ccc;
         padding: 10px;
+        fill: #fff;
     }
 }
 
@@ -54,11 +59,11 @@ button {
     display: grid;
     position: relative;
 
-    .back-button{
+    .closeIcon {
         position: absolute;
-        top: 0;
-        right: 0;
-        padding: 10px;
+        top: 0px;
+        right: 0px;
+        max-width: 20px;
     }
 }
 
@@ -73,23 +78,23 @@ button {
     display: flex;
     z-index: -1;
 
-    .error-title{
+    .error-title {
         font-size: 50px;
         text-align: center;
         font-weight: 900;
     }
 
-    .error-text{
+    .error-text {
         font-size: 20px;
     }
 }
 
-.error{
+.error {
     color: red;
     padding-top: 20px;
 }
 
-.success{
+.success {
     color: green;
     padding-top: 20px;
 }

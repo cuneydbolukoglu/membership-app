@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import passwordHash from 'password-hash';
 
+import registerIcon from '../assets/img/plus-solid.svg'
+
 const Login = props => {
 
     const [username, setUsername] = useState(null);
@@ -22,7 +24,7 @@ const Login = props => {
         <div className="login">
             <h1>LOGIN</h1>
             <Link to='/register'>
-                <button className="register-button">+</button>
+                <img className="registerIcon" src={registerIcon} alt=""/>
             </Link>
             <form>
                 <input type="text"

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import passwordHash from 'password-hash';
 
+import closeIcon from '../assets/img/times-solid.svg';
+
 const Register = props => {
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
@@ -9,6 +11,7 @@ const Register = props => {
     const [isShowError, setIsShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState([]);
     const [completed, setCompleted] = useState(false);
+    const [isDuplicate, setIsDuplicate] = useState(false);
 
     const onButtonClick = (e) => {
         e.preventDefault();
@@ -30,10 +33,9 @@ const Register = props => {
             errors.push("password null")
         } else if (password !== repeatPassword) {
             errors.push("password not match")
+        } else if (isDuplicate === true) {
+            errors.push("username registered!")
         }
-        // else if (isUserError(true)){
-        //     errors.push("username registered!")
-        // }
 
         setErrorMessage(errors);
     }
@@ -44,11 +46,23 @@ const Register = props => {
         const userLocalParse = JSON.parse(userLocal)
         let user = userLocal ? userLocalParse : [];
 
+        const userLocalList = userLocalParse.map(item => item.username)
+
         const newUser = {
             id: Date.now(),
             username: username,
             password: passwordHash.generate(password)
         }
+
+        const data = userLocalList
+        for (let i in data) {
+            if (data[i].username === username) {
+                setIsDuplicate(true)
+                break;
+            }
+        }
+
+        console.log(isDuplicate);
 
         if (user.push(newUser)) {
             setCompleted("You are registered successfully")
@@ -60,9 +74,9 @@ const Register = props => {
 
     return (
         <div className="register">
-            <h1>Register</h1>
+            <h1>REGISTER</h1>
             <Link to='/'>
-                <button className="back-button">X</button>
+                <img className="closeIcon" src={closeIcon} alt="Close" />
             </Link>
             <form onSubmit={onButtonClick}>
                 <input type="text"
