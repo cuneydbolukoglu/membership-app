@@ -46,23 +46,13 @@ const Register = props => {
         const userLocalParse = JSON.parse(userLocal)
         let user = userLocal ? userLocalParse : [];
 
-        const userLocalList = userLocalParse.map(item => item.username)
+     //   const userLocalList = userLocalParse.map(item => item.username)
 
         const newUser = {
             id: Date.now(),
             username: username,
             password: passwordHash.generate(password)
         }
-
-        const data = userLocalList
-        for (let i in data) {
-            if (data[i].username === username) {
-                setIsDuplicate(true)
-                break;
-            }
-        }
-
-        console.log(isDuplicate);
 
         if (user.push(newUser)) {
             setCompleted("You are registered successfully")
