@@ -11,7 +11,6 @@ const Register = props => {
     const [isShowError, setIsShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState([]);
     const [completed, setCompleted] = useState(false);
-    const [isDuplicate, setIsDuplicate] = useState(false);
 
     const onButtonClick = (e) => {
         e.preventDefault();
@@ -33,8 +32,6 @@ const Register = props => {
             errors.push("password null")
         } else if (password !== repeatPassword) {
             errors.push("password not match")
-        } else if (isDuplicate === true) {
-            errors.push("username registered!")
         }
 
         setErrorMessage(errors);
@@ -55,7 +52,7 @@ const Register = props => {
         }
 
         if (user.push(newUser)) {
-            setCompleted("You are registered successfully")
+            setCompleted("You are registered successfully");
         }
 
         // localstorage sync update
