@@ -24,7 +24,7 @@ const Login = props => {
         <div className="login">
             <h1>LOGIN</h1>
             <Link to='/register'>
-                <img className="registerIcon" src={registerIcon} alt=""/>
+                <img className="registerIcon" src={registerIcon} alt="Register"/>
             </Link>
             <form>
                 <input type="text"
