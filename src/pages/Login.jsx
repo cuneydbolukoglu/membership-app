@@ -20,11 +20,10 @@ const Login = props => {
         const usernameControl = userLocalParse.filter(item => item.username === username)
         const passwordControl = passwordHash.verify(password, usernameControl[0].password)
 
-        console.log()
         if (passwordControl === true) {
-            setMessage("Login successful")
+            setMessage(<div className="success">Login successful</div>)
         } else {
-            setMessage("Login failed !")
+            setMessage(<div className="error">Login failed !</div>)
         }
 
     }
@@ -48,7 +47,7 @@ const Login = props => {
                     onClick={onButtonClick}
                 >Login</button>
             </form>
-            <div className="success">{message}</div>
+            <div className="message">{message}</div>
         </div>
     )
 }

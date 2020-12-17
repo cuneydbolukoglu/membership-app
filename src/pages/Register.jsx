@@ -10,7 +10,7 @@ const Register = props => {
     const [repeatPassword, setRepeatPassword] = useState(null);
     const [isShowError, setIsShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState([]);
-    const [completed, setCompleted] = useState(false);
+    const [message, setMessage] = useState(null);
 
     const onButtonClick = (e) => {
         e.preventDefault();
@@ -52,10 +52,10 @@ const Register = props => {
         }
 
         if (hasName) {
-            setCompleted("Username registered !");            
+            setMessage(<div className="error">Username registered !</div>);            
         } else {
             user.push(newUser)
-            setCompleted("You are registered successfully");
+            setMessage(<div className="success">You are registered successfully</div>);
         }
 
         // localstorage sync update
@@ -88,7 +88,7 @@ const Register = props => {
             {
                 isShowError ?
                     <div className="error">{errorMessage.map((item, index) => <p key={index}>{item}</p>)}</div>
-                    : completed && <div className="success">{completed}</div>
+                    : message && <div className="message">{message}</div>
             }
         </div>
     )
