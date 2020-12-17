@@ -40,7 +40,7 @@ const Register = props => {
     const addNewUser = () => {
 
         const userLocal = localStorage.getItem("userList");
-        const userLocalParse = JSON.parse(userLocal)
+        const userLocalParse = JSON.parse(userLocal);
         let user = userLocal ? userLocalParse : [];
 
         const hasName = user.filter(item => item.username === username).length !== 0
@@ -52,7 +52,7 @@ const Register = props => {
         }
 
         if (hasName) {
-            alert("Username registered");            
+            setCompleted("Username registered !");            
         } else {
             user.push(newUser)
             setCompleted("You are registered successfully");

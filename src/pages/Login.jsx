@@ -8,16 +8,25 @@ const Login = props => {
 
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState(null);
+    const [message, setMessage] = useState(null);
 
-    const loginControl = (e) => {
+    const onButtonClick = (e) => {
         e.preventDefault();
 
         // load items array from localstorage 
         const userLocal = localStorage.getItem("userList");
-        const userLocalParse = JSON.parse(userLocal)
+        const userLocalParse = JSON.parse(userLocal);
 
-        // const userLocal2 = userLocalParse.map(item => (item.username === username)
-        // const hash = passwordHash.verify("sha1$db799b1a$1$bc58e3a35d38817076f40d08fff0e0cef02af90f")
+        const usernameControl = userLocalParse.filter(item => item.username === username)
+        const passwordControl = passwordHash.verify(password, usernameControl[0].password)
+
+        console.log()
+        if (passwordControl === true) {
+            setMessage("Login successful")
+        } else {
+            setMessage("Login failed !")
+        }
+
     }
 
     return (
@@ -36,9 +45,10 @@ const Login = props => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button
-                    onClick={loginControl}
+                    onClick={onButtonClick}
                 >Login</button>
             </form>
+            <div className="success">{message}</div>
         </div>
     )
 }
