@@ -43,7 +43,7 @@ const Register = props => {
         const userLocalParse = JSON.parse(userLocal)
         let user = userLocal ? userLocalParse : [];
 
-        const usernameDuplicate = userLocalParse.filter(item => item.username === username)
+        const hasName = user.filter(item => item.username === username).length !== 0
 
         const newUser = {
             id: Date.now(),
@@ -51,9 +51,8 @@ const Register = props => {
             password: passwordHash.generate(password)
         }
 
-        if (usernameDuplicate.length !== 0) {
-            //errors.push("Username registered")
-            console.log("Username registered")
+        if (hasName) {
+            alert("Username registered");            
         } else {
             user.push(newUser)
             setCompleted("You are registered successfully");
