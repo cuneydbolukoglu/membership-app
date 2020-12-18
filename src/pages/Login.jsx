@@ -17,8 +17,8 @@ const Login = props => {
         const userLocal = localStorage.getItem("userList");
         const userLocalParse = JSON.parse(userLocal);
 
-        const usernameControl = userLocalParse.filter(item => item.username === username)
-        const passwordControl = passwordHash.verify(password, usernameControl[0].password)
+        const usernameControl = username && userLocalParse.filter(item => item.username === username)
+        const passwordControl = password && passwordHash.verify(password, usernameControl[0].password)
 
         if (passwordControl === true) {
             setMessage(<div className="success">Login successful</div>)
