@@ -1,9 +1,11 @@
 const Index = props => {
-    return(
+
+    return (
         <footer>
-            © 2020 Membership App
+            footer
         </footer>
     )
+
 }
 
 export default Index;

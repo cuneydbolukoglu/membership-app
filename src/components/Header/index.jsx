@@ -1,9 +1,11 @@
 const Index = props => {
-    return (
+
+    return(
         <header>
-            Login
+            Header
         </header>
     )
+
 }
 
 export default Index;
