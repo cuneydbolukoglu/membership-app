@@ -1,8 +1,16 @@
+import { getData, setData } from '../components/data-controller';
+
 const Home = props => {
-    return(
-        <div>
-            Home
-        </div>
+
+    const onClick = e => {
+
+        getData(function (response) {
+            console.log("response :", response)
+        })
+    }
+
+    return (
+        <h1 onClick={onClick}>Home</h1>
     )
 }
 
