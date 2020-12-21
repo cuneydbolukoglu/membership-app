@@ -10,7 +10,8 @@ const getData = onComplete => {
 }
 
 const setData = onComplete => {
-
+    const data = localStorage.setItem("users", data);
+    onComplete()
 }
 
 export {
