@@ -15,13 +15,12 @@ const setData = (data, onComplete) => {
     const controlData = localData ? localData : "[]";
     const hasUser = JSON.parse(controlData).find(item => item.id === data.id);
 
-    !hasUser && localStorage.setItem(DATA_LOCALSTORAGE_NAME, controlData ? data : JSON.stringify([data]));
+    !hasUser && localStorage.setItem(DATA_LOCALSTORAGE_NAME, controlData ? JSON.stringify([data]) : JSON.stringify([data]));
 
     onComplete({
         result: !hasUser,
         message: hasUser ? MATCH_USER_MESSAGE : ADD_DATA_MESSAGE
     })
-
 }
 
 export {

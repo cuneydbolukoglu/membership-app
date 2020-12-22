@@ -2,7 +2,7 @@ import { setData } from '../components/data-controller';
 
 const Home = props => {
 
-    const newUser = { id: "121", username: "cuneyd", password: "1234" };
+    const newUser = { id: "12121", username: "cuneyd", password: "1234" };
 
     const onClick = e => {
         setData(newUser, function (response) {
