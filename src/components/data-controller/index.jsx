@@ -14,7 +14,7 @@ const getData = onComplete => {
 const setData = (data, onComplete) => {
     const localData = localStorage.getItem(DATA_LOCALSTORAGE_NAME);
     const controlData = localData ? localData : "[]";
-    const hasUser = JSON.parse(controlData).find(item => item.id === data.id);
+    const hasUser = JSON.parse(controlData).find(item => item.username === data.username);
 
     !hasUser && localStorage.setItem(DATA_LOCALSTORAGE_NAME, controlData ? updateLocalStorageData(data, controlData) : JSON.stringify([data]));
 
