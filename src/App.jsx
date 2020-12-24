@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, HashRouter } from "react-router-dom";
 
 import Header from './components/header';
 import Footer from './components/footer';
@@ -10,6 +10,7 @@ import Errorpage from './pages/404';
 
 function App() {
   return (
+    <HashRouter>
     <Router>
       <Header />
       <Switch>
@@ -20,6 +21,7 @@ function App() {
       </Switch>
       <Footer />
     </Router>
+    </HashRouter>
   )
 }
 

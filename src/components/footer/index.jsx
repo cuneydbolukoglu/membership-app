@@ -2,7 +2,7 @@ const Index = props => {
 
     return (
         <footer>
-            footer
+            
         </footer>
     )
 
