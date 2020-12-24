@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@200;800;900&display=swap");
+@import './layout/header.scss';
+@import './layout/footer.scss';
 
 * {
     margin: 0;
@@ -12,16 +13,6 @@ body {
     align-items: center;
     display: flex;
     height: 100%;
-}
-
-header {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #000;
-    color: #fff;
-    width: 100%;
-    height: 20px;
 }
 
 form {
@@ -107,11 +98,4 @@ button {
 .success {
     color: green;
     padding-top: 20px;
-}
-
-footer{
-    padding: 20px 0px;
-    font-size: 13px;
-    justify-content: center;
-    display: flex;
 }

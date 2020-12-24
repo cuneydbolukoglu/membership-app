@@ -1,9 +1,7 @@
 const Index = props => {
 
-    return(
-        <header>
-            Header
-        </header>
+    return (
+        <header></header>
     )
 
 }
