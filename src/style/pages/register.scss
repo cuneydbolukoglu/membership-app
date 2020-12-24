@@ -1,0 +1,13 @@
+.register {
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    position: relative;
+
+    .closeIcon {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        max-width: 20px;
+    }
+}

@@ -1,0 +1,13 @@
+.login {
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    position: relative;
+
+    .registerIcon {
+        position: absolute;
+        top: -30px;
+        right: -20px;
+        max-width:30px;
+    }
+}

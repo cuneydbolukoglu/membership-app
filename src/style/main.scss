@@ -1,0 +1,43 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100%;
+}
+
+form {
+    width: 300px;
+    display: grid;
+}
+
+input {
+    outline: none;
+    border: 0;
+    height: 60px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 30px;
+}
+
+button {
+    cursor: pointer;
+    background: none;
+    border: 1px solid #ccc;
+    padding: 20px;
+}
+
+.error {
+    color: red;
+    padding-top: 20px;
+}
+
+.success {
+    color: green;
+    padding-top: 20px;
+}
