@@ -4,17 +4,18 @@ import { setData } from '../components/data-controller';
 import { uuidv4 } from '../components/helper';
 import ErrorMessage from '../components/error-message';
 import { MATCH_PASWORD, NULL_PASSWORD, NULL_USERNAME } from '../components/message/message';
+import passwordHash from 'password-hash';
 
 import closeIcon from '../assets/img/times-solid.svg';
 
 const Register = props => {
     const [username, setUsername] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [password, setPassword] = useState("");
     const [repeatPassword, setRepeatPassword] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
     const [errorResult, setErrorResult] = useState(null);
 
-    const newUser = { id: uuidv4(), username: username, password: password };
+    const newUser = { id: uuidv4(), username: username, password: passwordHash.generate(password) };
 
     const onButtonClick = e => {
         e.preventDefault();
@@ -25,11 +26,11 @@ const Register = props => {
                 setErrorMessage(response.message);
                 setErrorResult(response.result);
             })
-        } else if (!username){
+        } else if (!username) {
             setErrorMessage(NULL_USERNAME);
-        } else if (!password){
+        } else if (!password) {
             setErrorMessage(NULL_PASSWORD);
-        } else if (password !== repeatPassword){
+        } else if (password !== repeatPassword) {
             setErrorMessage(MATCH_PASWORD);
         }
     }
@@ -57,7 +58,7 @@ const Register = props => {
                     onClick={onButtonClick}
                 >Kaydol</button>
             </form>
-            <ErrorMessage message={errorMessage} result={errorResult}/>
+            <ErrorMessage message={errorMessage} result={errorResult} />
         </div>
     )
 }

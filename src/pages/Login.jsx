@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getData } from '../components/data-controller';
 import { COULD_NOT_LOGIN, LOGIN_SUCCESS } from '../components/message/message';
 import ErrorMessage from '../components/error-message';
+import passwordHash from 'password-hash';
 
 import Home from './Home';
 
@@ -10,7 +11,7 @@ import registerIcon from '../assets/img/plus-solid.svg';
 
 const Login = props => {
     const [username, setUsername] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const [errorResult, setErrorResult] = useState(false);
 
@@ -18,7 +19,7 @@ const Login = props => {
         e.preventDefault();
 
         getData(function (response) {
-            const data = JSON.parse(response.data).find(item => item.username === username && item.password === password)
+            const data = JSON.parse(response.data).find(item => item.username === username && passwordHash.verify(password, item.password))            
 
             if (data) {
                 setErrorMessage(LOGIN_SUCCESS);
