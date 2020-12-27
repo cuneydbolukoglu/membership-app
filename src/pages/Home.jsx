@@ -10,11 +10,12 @@ const Home = props => {
         localStorage.removeItem(USER_LOCALSTORAGE_NAME);
     }
 
-
     return (
-        <div className="home-page">
-            <article>Hoşgeldiniz, <b>{username}</b></article>
-            <Link to="/" onClick={userLogout} >Logout</Link>
+        <div className="wrapper">
+            <div className="home-page">
+                <article>Hoşgeldiniz, <b>{username}</b></article>
+                <Link to="/" onClick={userLogout} >Logout</Link>
+            </div>
         </div>
     )
 }
