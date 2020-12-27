@@ -1,13 +1,30 @@
 .register {
-    justify-content: center;
-    align-items: center;
-    display: grid;
-    position: relative;
+
+    .left {
+        background-image: url(../../assets/img/bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 0;
+    }
+
+    .right {
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 100%;
+        right: 0;
+        display: flex;
+        float: right;
+    }
 
     .closeIcon {
         position: absolute;
-        top: 0px;
-        right: 0px;
-        max-width: 20px;
+        max-width: 25px;
+        top: 30%;
+        right: 0;
     }
 }

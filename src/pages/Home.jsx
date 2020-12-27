@@ -1,18 +1,21 @@
 
-import { Link, Route, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { USER_LOCALSTORAGE_NAME } from '../components/message/message';
 
 const Home = props => {
-    const hasLogin = props.login
-    const username = props.username
+    const userLocal = localStorage.getItem(USER_LOCALSTORAGE_NAME)
+    const username = userLocal
+
+    const userLogout = () => {
+        localStorage.removeItem(USER_LOCALSTORAGE_NAME);
+    }
+
 
     return (
-        <>
-            <Route exact path="/">
-                {hasLogin ? <Redirect to="/home" /> : <Redirect to="/" />}
-            </Route>
-            <div>Hoşgeldiniz, {username}</div>
-            <Link to="/">Logout</Link>
-        </>
+        <div className="home-page">
+            <article>Hoşgeldiniz, <b>{username}</b></article>
+            <Link to="/" onClick={userLogout} >Logout</Link>
+        </div>
     )
 }
 

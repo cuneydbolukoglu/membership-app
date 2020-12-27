@@ -1,13 +1,27 @@
 .login {
-    justify-content: center;
-    align-items: center;
-    display: grid;
-    position: relative;
-
     .registerIcon {
         position: absolute;
-        top: -30px;
-        right: -20px;
-        max-width:30px;
+        max-width: 25px;
+        top: 30%;
+        right: 0;
+    }
+
+    .left {
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        width: 50%;
+        height: 100%;
+        display: flex;
+    }
+
+    .right {
+        background-image: url(../../assets/img/bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        right: 0;
     }
 }

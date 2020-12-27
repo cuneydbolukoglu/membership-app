@@ -4,12 +4,17 @@
     padding: 0;
 }
 
+
+$color: #e11513;
+
 html,
 body {
-    justify-content: center;
-    align-items: center;
-    display: flex;
+    width: 100%;
     height: 100%;
+}
+
+h1{
+    color: $color;
 }
 
 form {
@@ -20,16 +25,45 @@ form {
 input {
     outline: none;
     border: 0;
-    height: 60px;
-    border-bottom: 1px solid #000;
-    margin-bottom: 30px;
+    height: 50px;
+    margin-bottom: 20px;
+    background-color: #f4f8f7;
+    padding: 0px 10px;
 }
 
 button {
     cursor: pointer;
-    background: none;
     border: 1px solid #ccc;
     padding: 20px;
+    background: none;
+    font-size: 15px;
+    background-color: $color;
+    color: #fff;
+    outline-style: none;
+}
+
+.button-link {
+    cursor: pointer;
+    border: none;
+    padding: 10px 0px;
+    background: none;
+    font-size: 15px;
+    color: #000;
+    outline-style: none;
+
+    &:hover{
+        color: $color;
+        transition: .9s;
+    }
+}
+
+.wrapper{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .error {

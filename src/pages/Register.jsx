@@ -6,8 +6,6 @@ import ErrorMessage from '../components/error-message';
 import { MATCH_PASWORD, NULL_PASSWORD, NULL_USERNAME } from '../components/message/message';
 import passwordHash from 'password-hash';
 
-import closeIcon from '../assets/img/times-solid.svg';
-
 const Register = props => {
     const [username, setUsername] = useState(null);
     const [password, setPassword] = useState("");
@@ -37,28 +35,31 @@ const Register = props => {
 
     return (
         <div className="register">
-            <h1>Kayıt ol</h1>
-            <Link to='/'>
-                <img className="closeIcon" src={closeIcon} alt="Close" />
-            </Link>
-            <form onSubmit={onButtonClick}>
-                <input type="text"
-                    placeholder="Kullanıcı Adı"
-                    onChange={(e) => { setUsername(e.target.value) }}
-                />
-                <input type="password"
-                    placeholder="Parola"
-                    onChange={(e) => { setPassword(e.target.value) }}
-                />
-                <input type="password"
-                    placeholder="Parolayı tekrar girin"
-                    onChange={(e) => { setRepeatPassword(e.target.value) }}
-                />
-                <button
-                    onClick={onButtonClick}
-                >Kaydol</button>
-            </form>
-            <ErrorMessage message={errorMessage} result={errorResult} />
+            <div className="left"></div>
+            <div className="right">
+                <form onSubmit={onButtonClick}>
+                    <h1>Register</h1>
+                    <input type="text"
+                        placeholder="Username"
+                        onChange={(e) => { setUsername(e.target.value) }}
+                    />
+                    <input type="password"
+                        placeholder="Password"
+                        onChange={(e) => { setPassword(e.target.value) }}
+                    />
+                    <input type="password"
+                        placeholder="Password Match"
+                        onChange={(e) => { setRepeatPassword(e.target.value) }}
+                    />
+                    <button
+                        onClick={onButtonClick}
+                    >Sign Up</button>
+                    <ErrorMessage message={errorMessage} result={errorResult} />
+                    <Link to='/'>
+                        <button className="button-link">Login</button>
+                    </Link>
+                </form>
+            </div>
         </div>
     )
 }
