@@ -38,7 +38,7 @@ const Register = props => {
             <div className="left"></div>
             <div className="right">
                 <form onSubmit={onButtonClick}>
-                    <h1>Register</h1>
+                    <h1>New Account</h1>
                     <input type="text"
                         placeholder="Username"
                         onChange={(e) => { setUsername(e.target.value) }}
