@@ -25,3 +25,20 @@
         right: 0;
     }
 }
+
+@media screen and (max-width: 740px) {
+
+    .login {
+
+        .left {
+            width: 100% !important;
+        }
+
+        .right {
+            width: 100% !important;
+            height: 10px !important;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+}

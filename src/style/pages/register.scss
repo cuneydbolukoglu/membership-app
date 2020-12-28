@@ -28,3 +28,21 @@
         right: 0;
     }
 }
+
+@media screen and (max-width: 740px) {
+
+    .register {
+
+        .left {
+            width: 100% !important;
+            height: 10px !important;
+            position: absolute;
+            bottom: 0;
+        }
+        
+        .right {
+            width: 100% !important;
+        }
+
+    }
+}

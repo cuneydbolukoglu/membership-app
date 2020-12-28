@@ -5,7 +5,7 @@ import { COULD_NOT_LOGIN, LOGIN_SUCCESS, USER_LOCALSTORAGE_NAME } from '../compo
 import ErrorMessage from '../components/error-message';
 import passwordHash from 'password-hash';
 
-import Private from './private';
+import Private from './Private';
 
 const Login = props => {
     const [username, setUsername] = useState(null);
