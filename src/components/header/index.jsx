@@ -1,15 +1,15 @@
 const Index = props => {
 
-    console.log("location :", navigator);
+    const match = props.match
 
     return (
-        window.location.pathname === "/home" && (
+        match ? (
             <header>
                 <div className="logo">
                     Membership App
                 </div>
             </header>
-        )
+        ) : <></>
     )
 }
 
