@@ -13,14 +13,14 @@ const Home = props => {
     }
 
     return (
-        <div className="wrapper">
+        <div className="wrapper" >
             <div className="home-page">
                 <article>Hoşgeldiniz, <b>{username}</b></article>
                 <Link to="/" onClick={userLogout}>
                     <button className="button-logout">Logout<img src={LogoutIcon} alt="Logout" /></button>
                 </Link>
             </div>
-        </div>
+        </div >
     )
 }
 

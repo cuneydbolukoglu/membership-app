@@ -1,7 +1,6 @@
 const Index = props => {
 
-    const location = window.location;
-    console.log(location);
+    console.log("location :", navigator);
 
     return (
         window.location.pathname === "/home" && (
