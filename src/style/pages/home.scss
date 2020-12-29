@@ -3,6 +3,7 @@
     justify-content: space-between;
 
     .button-logout{
+        position: relative;
         cursor: pointer;
         border: none;
         padding: 0px;
@@ -15,6 +16,9 @@
             position: absolute;
             max-width: 20px;
             margin-left: 5px;
+            right: 0;
+            left: -28px;
+            top: -1px;
         }
     }
 }

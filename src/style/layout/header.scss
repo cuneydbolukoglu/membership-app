@@ -1,16 +1,39 @@
 header {
-    width: 100%;
-    max-width: 1140px;
+    height: 55px;
+    color: #fff;
     justify-content: space-between;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding: 15px 20px;
     margin-right: auto;
     margin-left: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
+
+    &:before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 55px;
+        top: 0;
+        left: 0;
+        background-image: url(../../assets/img/bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-bottom: 3px solid #c30c12;
+        z-index: -1;
+    }
+
+    img{
+        max-width: 32px;
+        margin-right: 10px;
+    }
 
     .logo{
-        font-size: 30px;
+        font-size: 25px;
         font-weight: 900;
+    }
+}
+
+@media screen and (max-width: 740px) {
+
+    .logo {
+        font-size: 25px !important;
     }
 }
