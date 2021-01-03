@@ -1,19 +1,37 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { getData } from '../components/data-controller';
+import { COULD_NOT_LOGIN, LOGIN_SUCCESS, USER_LOCALSTORAGE_NAME } from '../components/message/message';
 import ErrorMessage from '../components/error-message';
 import passwordHash from 'password-hash';
 
 import Private from './Private';
 
 const Login = props => {
-    const [email, setEmail] = useState(null);
+    const [username, setUsername] = useState(null);
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const [errorResult, setErrorResult] = useState(false);
-    
+
     const onButtonClick = e => {
         e.preventDefault();
 
+        getData(function (response) {
+            const data = JSON.parse(response.data).find(item => item.username === username && passwordHash.verify(password, item.password))
+
+            if (data) {
+                setErrorMessage(LOGIN_SUCCESS);
+                setErrorResult(true);
+                setUsernameLocal();
+            } else {
+                setErrorMessage(COULD_NOT_LOGIN);
+                setErrorResult(false);
+            }
+        });
+    }
+
+    const setUsernameLocal = () => {
+        localStorage.setItem(USER_LOCALSTORAGE_NAME, username);
     }
 
     return (
@@ -22,8 +40,8 @@ const Login = props => {
                 <form>
                     <h1>LOGIN</h1>
                     <input type="text"
-                        placeholder="Email"
-                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Username"
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                     <input type="password"
                         placeholder="Password"

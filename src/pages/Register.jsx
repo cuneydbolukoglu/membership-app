@@ -1,25 +1,36 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { setData } from '../components/data-controller';
+import { uuidv4 } from '../components/helper';
 import ErrorMessage from '../components/error-message';
+import { MATCH_PASWORD, NULL_PASSWORD, NULL_USERNAME } from '../components/message/message';
 import passwordHash from 'password-hash';
-import { auth } from '../firebase';
 
 const Register = props => {
-    const [email, setEmail] = useState(null);
+    const [username, setUsername] = useState(null);
     const [password, setPassword] = useState("");
+    const [repeatPassword, setRepeatPassword] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
     const [errorResult, setErrorResult] = useState(null);
+
+    const newUser = { id: uuidv4(), username: username, password: passwordHash.generate(password) };
 
     const onButtonClick = e => {
         e.preventDefault();
 
-        auth.createUserWithEmailAndPassword(email, passwordHash.generate(password))
-            .then(res => {
-                console.log(res)
+        if (username && password && password === repeatPassword) {
+            setData(newUser, function (response) {
+                console.log(response);
+                setErrorMessage(response.message);
+                setErrorResult(response.result);
             })
-            .catch(err => {
-                console.error(err)
-            })
+        } else if (!username) {
+            setErrorMessage(NULL_USERNAME);
+        } else if (!password) {
+            setErrorMessage(NULL_PASSWORD);
+        } else if (password !== repeatPassword) {
+            setErrorMessage(MATCH_PASWORD);
+        }
     }
 
     return (
@@ -29,12 +40,16 @@ const Register = props => {
                 <form onSubmit={onButtonClick}>
                     <h1>New Account</h1>
                     <input type="text"
-                        placeholder="Email"
-                        onChange={(e) => { setEmail(e.target.value) }}
+                        placeholder="Username"
+                        onChange={(e) => { setUsername(e.target.value) }}
                     />
                     <input type="password"
                         placeholder="Password"
                         onChange={(e) => { setPassword(e.target.value) }}
+                    />
+                    <input type="password"
+                        placeholder="Password Match"
+                        onChange={(e) => { setRepeatPassword(e.target.value) }}
                     />
                     <button
                         onClick={onButtonClick}
