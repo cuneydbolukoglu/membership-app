@@ -20,6 +20,7 @@ const Register = props => {
             .catch(err => {
                 console.error(err)
             })
+            
     }
 
     return (

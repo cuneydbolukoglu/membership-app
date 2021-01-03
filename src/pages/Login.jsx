@@ -13,7 +13,6 @@ const Login = props => {
     
     const onButtonClick = e => {
         e.preventDefault();
-
     }
 
     return (

@@ -6,4 +6,8 @@ import firebaseConfig from './config';
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-firebase.auth();
+const auth = firebase.auth();
+
+export {
+    auth,
+}
