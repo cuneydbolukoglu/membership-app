@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ErrorMessage from '../components/error-message';
 import passwordHash from 'password-hash';
-import { auth } from '../firebase';
+import fire from '../firebase';
 
 const Register = props => {
     const [email, setEmail] = useState(null);
@@ -13,14 +13,14 @@ const Register = props => {
     const onButtonClick = e => {
         e.preventDefault();
 
-        auth.createUserWithEmailAndPassword(email, passwordHash.generate(password))
+        fire.auth().createUserWithEmailAndPassword(email, passwordHash.generate(password))
             .then(res => {
                 console.log(res)
+                setErrorMessage(res.message)
             })
             .catch(err => {
                 console.error(err)
             })
-            
     }
 
     return (

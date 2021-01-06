@@ -5,7 +5,7 @@ const firebaseConfig = {
   projectId: "membership-app-91af9",
   storageBucket: "membership-app-91af9.appspot.com",
   messagingSenderId: "425207285927",
-  appId: "1:425207285927:web:ab1e8cfc9bb1ebfbeff382"
+  appId: "1:425207285927:web:7e515d9ea38e80bdeff382"
 };
 
 export default firebaseConfig;
