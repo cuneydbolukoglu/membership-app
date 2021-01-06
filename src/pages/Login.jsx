@@ -1,18 +1,28 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ErrorMessage from '../components/error-message';
+import fire from '../firebase';
 import passwordHash from 'password-hash';
-
 import Private from './Private';
 
 const Login = props => {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
-    const [errorResult, setErrorResult] = useState(false);
-    
+    const [errorResult, setErrorResult] = useState(null);
+
     const onButtonClick = e => {
         e.preventDefault();
+
+        fire.auth().signInWithEmailAndPassword(email, passwordHash.verify(password))
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.error(err);
+                setErrorMessage(err.message);
+                setErrorResult(false);
+            })
     }
 
     return (
@@ -37,7 +47,6 @@ const Login = props => {
                         <button className="button-link">Create an Account</button>
                     </Link>
                 </form>
-
             </div>
             <div className="right"></div>
         </div>

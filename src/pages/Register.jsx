@@ -15,11 +15,19 @@ const Register = props => {
 
         fire.auth().createUserWithEmailAndPassword(email, passwordHash.generate(password))
             .then(res => {
-                console.log(res)
-                setErrorMessage(res.message)
+                console.log(res);
+                
+                if(res.operationType === "signIn"){
+                    setErrorMessage("your have successfully registered");
+                    setErrorResult(true);
+                } else {
+                    setErrorResult(false);
+                }
             })
             .catch(err => {
-                console.error(err)
+                console.error(err);
+                setErrorMessage(err.message);
+                setErrorResult(false);
             })
     }
 
