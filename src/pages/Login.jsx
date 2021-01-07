@@ -17,10 +17,17 @@ const Login = props => {
         fire.auth().signInWithEmailAndPassword(email, password)
             .then(res => {
                 console.log(res);
-                setErrorResult(true);
+
+                if(res.operationType === "signIn"){
+                    setErrorMessage("You have successfully logged in");
+                    setErrorResult(true);
+                } else {
+                    setErrorResult(false);
+                }
             })
             .catch(err => {
                 console.error(err);
+                setErrorMessage(err.message);
                 setErrorResult(false);
             })
     }

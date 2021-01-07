@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { USER_LOCALSTORAGE_NAME } from '../components/message/message';
 import LogoutIcon from '../assets/img/sign-out-alt-solid.svg';
 import Header from '../components/header';
 import fire from '../firebase';
 
 const Home = props => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState('');
     const match = props.match.path === '/home'
     
     fire.auth().onAuthStateChanged((user)=> {
