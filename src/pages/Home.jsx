@@ -1,19 +1,20 @@
-
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { USER_LOCALSTORAGE_NAME } from '../components/message/message';
-
 import LogoutIcon from '../assets/img/sign-out-alt-solid.svg';
-
 import Header from '../components/header';
+import fire from '../firebase';
 
 const Home = props => {
+    const [user, setUser] = useState(null);
     const match = props.match.path === '/home'
-
-    const userLocal = localStorage.getItem(USER_LOCALSTORAGE_NAME)
-    const username = userLocal
+    
+    fire.auth().onAuthStateChanged((user)=> {
+        setUser(user.email);
+    })
 
     const userLogout = () => {
-        localStorage.removeItem(USER_LOCALSTORAGE_NAME);
+        fire.auth().signOut();
     }
 
     return (
@@ -21,7 +22,7 @@ const Home = props => {
             <Header match={match} />
             <div className="wrapper" >
                 <div className="home-page">
-                    <article>Hoşgeldiniz, <b>{username}</b></article>
+                    <article>Hoşgeldiniz, <b>{user}</b></article>
                     <Link to="/" onClick={userLogout}>
                         <button className="button-logout">Logout<img src={LogoutIcon} alt="Logout" /></button>
                     </Link>

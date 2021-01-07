@@ -13,7 +13,7 @@ const Register = props => {
     const onButtonClick = e => {
         e.preventDefault();
 
-        fire.auth().createUserWithEmailAndPassword(email, passwordHash.generate(password))
+        fire.auth().createUserWithEmailAndPassword(email, password)
             .then(res => {
                 console.log(res);
                 

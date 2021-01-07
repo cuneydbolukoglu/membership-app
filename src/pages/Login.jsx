@@ -14,13 +14,13 @@ const Login = props => {
     const onButtonClick = e => {
         e.preventDefault();
 
-        fire.auth().signInWithEmailAndPassword(email, passwordHash.verify(password))
+        fire.auth().signInWithEmailAndPassword(email, password)
             .then(res => {
                 console.log(res);
+                setErrorResult(true);
             })
             .catch(err => {
                 console.error(err);
-                setErrorMessage(err.message);
                 setErrorResult(false);
             })
     }
