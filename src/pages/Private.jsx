@@ -5,8 +5,6 @@ import Home from './Home';
 const Private = props => {
     const haslogin = true
 
-    console.log(haslogin)
-
     const authListener = () => {
         fire.auth().onAuthStateChanged((user) => {
             console.log("private: ", user);

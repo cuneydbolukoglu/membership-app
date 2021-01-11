@@ -20,7 +20,7 @@ const Login = props => {
             .then(res => {
                 console.log(res);
 
-                if(res.operationType === "signIn"){
+                if (res.operationType === "signIn") {
                     setErrorMessage(LOGIN_SUCCESS);
                     setErrorResult(true);
                     setHasLogin(true);
@@ -34,7 +34,7 @@ const Login = props => {
                 console.error(err);
                 setErrorMessage(err.message);
                 setErrorResult(false);
-            })       
+            })
     }
 
     return (
