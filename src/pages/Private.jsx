@@ -1,12 +1,22 @@
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import fire from '../firebase';
+import Home from './Home';
 
 const Private = props => {
-    const hasLogin = props.login
+    const haslogin = true
+
+    console.log(haslogin)
+
+    const authListener = () => {
+        fire.auth().onAuthStateChanged((user) => {
+            console.log("private: ", user);
+        })
+    }
+
+    authListener();
 
     return (
-        <Route exact path="/">
-            {hasLogin ? <Redirect to="/home" /> : <Redirect to="/" />}
-        </Route>
+        haslogin ? <Home /> : <Redirect to="/" />
     )
 }
 

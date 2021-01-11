@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ErrorMessage from '../components/error-message';
-import passwordHash from 'password-hash';
+import { USER_CREATE } from '../components/message/message';
 import fire from '../firebase';
-import Private from './Private';
 
 const Register = props => {
     const [email, setEmail] = useState(null);
@@ -19,7 +18,7 @@ const Register = props => {
                 console.log(res);
                 
                 if(res.operationType === "signIn"){
-                    setErrorMessage("Your have successfully registered");
+                    setErrorMessage(USER_CREATE);
                     setErrorResult(true);
                 } else {
                     setErrorResult(false);
@@ -50,7 +49,6 @@ const Register = props => {
                         onClick={onButtonClick}
                     >Sign Up</button>
                     <ErrorMessage message={errorMessage} result={errorResult} />
-                    <Private login={errorResult} />
                     <Link to='/'>
                         <button className="button-link">Login</button>
                     </Link>

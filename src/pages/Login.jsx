@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { LOGIN_SUCCESS } from '../components/message/message';
 import ErrorMessage from '../components/error-message';
 import fire from '../firebase';
-import passwordHash from 'password-hash';
-import Private from './Private';
 
 const Login = props => {
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const [errorResult, setErrorResult] = useState(null);
+    const [haslogin, setHasLogin] = useState(false);
+
+    const history = useHistory();
 
     const onButtonClick = e => {
         e.preventDefault();
@@ -19,17 +21,20 @@ const Login = props => {
                 console.log(res);
 
                 if(res.operationType === "signIn"){
-                    setErrorMessage("You have successfully logged in");
+                    setErrorMessage(LOGIN_SUCCESS);
                     setErrorResult(true);
+                    setHasLogin(true);
+                    history.push('/home');
                 } else {
                     setErrorResult(false);
+                    setHasLogin(false);
                 }
             })
             .catch(err => {
                 console.error(err);
                 setErrorMessage(err.message);
                 setErrorResult(false);
-            })
+            })       
     }
 
     return (
@@ -49,7 +54,6 @@ const Login = props => {
                         onClick={onButtonClick}
                     >Login</button>
                     <ErrorMessage message={errorMessage} result={errorResult} />
-                    <Private login={errorResult} />
                     <Link to='/register'>
                         <button className="button-link">Create an Account</button>
                     </Link>

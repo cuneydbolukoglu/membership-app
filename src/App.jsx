@@ -1,23 +1,24 @@
-import { BrowserRouter as Router, Route, Switch, HashRouter } from "react-router-dom";
-
+import { BrowserRouter as Router, Route, Switch, HashRouter, useLocation } from "react-router-dom";
 import Header from './components/header';
-
-import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Errorpage from './pages/404';
-import Private from "./pages/Private";
+import Private from './pages/Private';
 
 function App() {
+  const location = useLocation();
+  const match = location.pathname === '/home'
+
+  console.log(location);
+
   return (
     <HashRouter>
       <Router>
-        <Header />
+        <Header match={match} />
         <Switch>
           <Route exact path="/" component={Login} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/private" component={Private} />
+          <Route exact path="/home" component={Private} />
           <Route component={Errorpage} />
         </Switch>
       </Router>
