@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import ErrorMessage from '../components/error-message';
 import { USER_CREATE } from '../components/message/message';
 import fire from '../firebase';
@@ -9,6 +9,8 @@ const Register = props => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const [errorResult, setErrorResult] = useState(null);
+
+    const history = useHistory();
 
     const onButtonClick = e => {
         e.preventDefault();
@@ -20,6 +22,7 @@ const Register = props => {
                 if(res.operationType === "signIn"){
                     setErrorMessage(USER_CREATE);
                     setErrorResult(true);
+                    history.push('/home');
                 } else {
                     setErrorResult(false);
                 }

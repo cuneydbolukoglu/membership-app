@@ -9,7 +9,7 @@ const Login = props => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const [errorResult, setErrorResult] = useState(null);
-    const [haslogin, setHasLogin] = useState(false);
+    const [haslogin, setHasLogin] = useState("");
 
     const history = useHistory();
 
@@ -27,7 +27,6 @@ const Login = props => {
                     history.push('/home');
                 } else {
                     setErrorResult(false);
-                    setHasLogin(false);
                 }
             })
             .catch(err => {
