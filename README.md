@@ -1,6 +1,6 @@
 # Demo link
 
-https://membership-app-91af9--a-lqnffmh5.web.app
+https://membership-app-91af9.firebaseapp.com
 
 # Getting Started with Create React App
 
