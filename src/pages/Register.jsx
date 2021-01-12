@@ -22,6 +22,8 @@ const Register = props => {
                 if(res.operationType === "signIn"){
                     setErrorMessage(USER_CREATE);
                     setErrorResult(true);
+                    let token = res.user.refreshToken
+                    localStorage.setItem("token", token);
                     history.push('/home');
                 } else {
                     setErrorResult(false);

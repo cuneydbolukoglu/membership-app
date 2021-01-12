@@ -9,7 +9,6 @@ const Login = props => {
     const [password, setPassword] = useState("");
     const [errorMessage, setErrorMessage] = useState(null);
     const [errorResult, setErrorResult] = useState(null);
-    const [haslogin, setHasLogin] = useState("");
 
     const history = useHistory();
 
@@ -23,7 +22,8 @@ const Login = props => {
                 if (res.operationType === "signIn") {
                     setErrorMessage(LOGIN_SUCCESS);
                     setErrorResult(true);
-                    setHasLogin(true);
+                    let token = res.user.refreshToken
+                    localStorage.setItem("token", token);
                     history.push('/home');
                 } else {
                     setErrorResult(false);
