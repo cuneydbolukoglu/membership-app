@@ -6,16 +6,15 @@ import { auth } from '../firebase';
 const Home = props => {
     const [user, setUser] = useState('');
 
+    const authListener = () => {
+        auth.onAuthStateChanged((user) => {
+            user ? setUser(user.email) : setUser(null)
+        })
+    }
+
     useEffect(() => {
-
-        const authListener = () => {
-            auth.onAuthStateChanged((user) => {
-                user ? setUser(user.email) : setUser(null)
-            })
-        }
         authListener();
-    }, []);
-
+    });
 
     const userLogout = () => {
         auth.signOut();
