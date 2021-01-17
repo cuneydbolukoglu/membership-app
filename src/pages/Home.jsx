@@ -1,25 +1,24 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import LogoutIcon from '../assets/img/sign-out-alt-solid.svg';
-import fire from '../firebase';
+import { auth } from '../firebase';
 
 const Home = props => {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState('');
 
     useEffect(() => {
 
         const authListener = () => {
-            fire.auth().onAuthStateChanged((user) => {
-                setUser(user.email);
+            auth.onAuthStateChanged((user) => {
+                user ? setUser(user.email) : setUser(null)
             })
         }
-
         authListener();
-    });
+    }, []);
 
 
     const userLogout = () => {
-        fire.auth().signOut();
+        auth.signOut();
         localStorage.removeItem("token")
     }
 

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { LOGIN_SUCCESS } from '../components/message/message';
+import { LOGIN_SUCCESS, NULL_PASSWORD, NULL_USERNAME } from '../components/message/message';
 import ErrorMessage from '../components/error-message';
-import fire from '../firebase';
+import { auth } from '../firebase';
 
 const Login = props => {
     const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
     const [errorResult, setErrorResult] = useState(null);
 
@@ -15,25 +15,32 @@ const Login = props => {
     const onButtonClick = e => {
         e.preventDefault();
 
-        fire.auth().signInWithEmailAndPassword(email, password)
-            .then(res => {
-                console.log(res);
+        if (!email) {
+            setErrorMessage(NULL_USERNAME);
+        } else if (!password) {
+            setErrorMessage(NULL_PASSWORD);
+        } else {
 
-                if (res.operationType === "signIn") {
-                    setErrorMessage(LOGIN_SUCCESS);
-                    setErrorResult(true);
-                    let token = res.user.refreshToken
-                    localStorage.setItem("token", token);
-                    history.push('/home');
-                } else {
+            auth.signInWithEmailAndPassword(email, password)
+                .then(res => {
+                    console.log("response: ", res);
+
+                    if (res.operationType === "signIn") {
+                        setErrorMessage(LOGIN_SUCCESS);
+                        setErrorResult(true);
+                        let token = res.user.refreshToken
+                        localStorage.setItem("token", token);
+                        history.push("/");
+                    } else {
+                        setErrorResult(false);
+                    }
+                })
+                .catch(err => {
+                    console.error("error: ", err);
+                    setErrorMessage(err.message);
                     setErrorResult(false);
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                setErrorMessage(err.message);
-                setErrorResult(false);
-            })
+                })
+        }
     }
 
     return (

@@ -5,7 +5,7 @@ const Private = props => {
     const haslogin = localStorage.getItem("token");
 
     return (
-        haslogin ? <Home /> : <Redirect to="/" />
+        haslogin ? <Home /> : <Redirect to="/login"/>
     )
 }
 

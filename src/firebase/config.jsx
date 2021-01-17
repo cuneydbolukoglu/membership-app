@@ -1,11 +1,11 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyBWUzsX6lffkC0WqYJcfAOmAW2kryy7jK0",
-  authDomain: "membership-app-91af9.firebaseapp.com",
-  databaseURL: "https://membership-app-91af9-default-rtdb.firebaseio.com",
-  projectId: "membership-app-91af9",
-  storageBucket: "membership-app-91af9.appspot.com",
-  messagingSenderId: "425207285927",
-  appId: "1:425207285927:web:7e515d9ea38e80bdeff382"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_BASEURL,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
 };
 
 export default firebaseConfig;

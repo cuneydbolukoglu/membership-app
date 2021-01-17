@@ -6,7 +6,6 @@ import Errorpage from './pages/404';
 import Private from './pages/Private';
 
 function App() {
-
   return (
       <Router>
         <Header />
