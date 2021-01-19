@@ -4,7 +4,7 @@ import { setData } from '../components/data-controller';
 import { uuidv4 } from '../components/helper';
 import ErrorMessage from '../components/error-message';
 import { MATCH_PASWORD, NULL_PASSWORD, NULL_USERNAME } from '../components/message/message';
-import passwordHash from 'password-hash';
+import md5 from 'md5';
 
 const Register = props => {
     const [username, setUsername] = useState(null);
@@ -13,7 +13,7 @@ const Register = props => {
     const [errorMessage, setErrorMessage] = useState(null);
     const [errorResult, setErrorResult] = useState(null);
 
-    const newUser = { id: uuidv4(), username: username, password: passwordHash.generate(password) };
+    const newUser = { id: uuidv4(), username: username, password: md5(password) };
 
     const onButtonClick = e => {
         e.preventDefault();

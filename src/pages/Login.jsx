@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getData } from '../components/data-controller';
 import { COULD_NOT_LOGIN, LOGIN_SUCCESS, USER_LOCALSTORAGE_NAME } from '../components/message/message';
 import ErrorMessage from '../components/error-message';
-import passwordHash from 'password-hash';
+import md5 from 'md5';
 
 import Private from './Private';
 
@@ -17,7 +17,7 @@ const Login = props => {
         e.preventDefault();
 
         getData(function (response) {
-            const data = JSON.parse(response.data).find(item => item.username === username && passwordHash.verify(password, item.password))
+            const data = JSON.parse(response.data).find(item => item.username === username && md5(password))
 
             if (data) {
                 setErrorMessage(LOGIN_SUCCESS);
