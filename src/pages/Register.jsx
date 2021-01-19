@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import ErrorMessage from '../components/error-message';
 import { MATCH_PASWORD, NULL_PASSWORD, NULL_USERNAME, USER_CREATE } from '../components/message/message';
 import { auth } from '../firebase';
+import md5 from 'md5';
 
 const Register = props => {
     const [email, setEmail] = useState(null);
@@ -24,7 +25,7 @@ const Register = props => {
             setErrorMessage(MATCH_PASWORD);
         } else {
 
-            auth.createUserWithEmailAndPassword(email, password)
+            auth.createUserWithEmailAndPassword(email, md5(password))
                 .then(res => {
                     console.log("response: ", res);
                     console.log("response: ", res.message);

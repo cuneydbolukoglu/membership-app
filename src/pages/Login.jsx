@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { LOGIN_SUCCESS, NULL_PASSWORD, NULL_USERNAME } from '../components/message/message';
 import ErrorMessage from '../components/error-message';
 import { auth } from '../firebase';
+import md5 from 'md5';
 
 const Login = props => {
     const [email, setEmail] = useState(null);
@@ -21,7 +22,7 @@ const Login = props => {
             setErrorMessage(NULL_PASSWORD);
         } else {
 
-            auth.signInWithEmailAndPassword(email, password)
+            auth.signInWithEmailAndPassword(email, md5(password))
                 .then(res => {
                     console.log("response: ", res);
 
